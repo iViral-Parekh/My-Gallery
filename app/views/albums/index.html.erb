@@ -1,0 +1,9 @@
+<div class="user-images">
+  <% @albums.each do |album|%>
+    <div class="wrapper">
+      <%=link_to album_path(album) do %>
+        <%=image_tag album.image %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

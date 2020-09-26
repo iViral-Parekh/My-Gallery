@@ -19,9 +19,15 @@
           </a>
         </div>
         <div class="user-section">
+          <a href=<%= albums_path%>>
+            <i class="fa fa-folder-open"></i>
+          </a>
           <% if user_signed_in? %>
             <a href="<%= user_path(current_user)%>">
               <i class="fa fa-user"></i>
+            </a>
+            <a href="<%= destroy_user_session_path%>" data-method="delete">
+              <i class="fa">Sign Out</i>
             </a>
           <% else %>
             <a href="<%= new_user_session_path%>">
@@ -32,8 +38,11 @@
       </div>
     </nav>
     <main class="container" style="min-height: 500px;">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% elsif alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
     <footer class="container footer">

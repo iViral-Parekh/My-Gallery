@@ -1,7 +1,19 @@
 class PhotosController < ApplicationController
 	def create
-		Photo.create(post_params)
-		redirect_to user_path(current_user)
+		photo = Photo.new(post_params)
+		photo.save
+		if photo.errors.any?
+			photo.errors[:image].each do |error|
+				flash[:alert] = error
+			end
+		else
+			flash[:notice] = "Album Created Successfully"
+		end
+		if user_signed_in?
+			redirect_to user_path(current_user)
+		else
+			redirect_to root_path
+		end
 	end
 
 	def new

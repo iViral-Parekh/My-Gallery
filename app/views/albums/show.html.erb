@@ -19,7 +19,7 @@
 </div>
 <div class="photo-show row">
   <div class="user-images">
-    <% @album.photos.each do |photo|%>
+    <% @album.photos.order(created_at: :desc).each do |photo|%>
       <div class="wrapper">
         <%=image_tag photo.image %>
       </div>

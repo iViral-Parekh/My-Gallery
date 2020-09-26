@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :users, only: [:show]
-  resources :albums, only: [:new, :create, :show]
+  resources :albums
   resources :photos, only: [:new, :create, :show]
 end
