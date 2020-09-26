@@ -1,0 +1,15 @@
+<div class="albums">
+  <% @albums.each do |album| %>
+    <section class="album">
+      <div class="user">
+        <div class="username">
+          <%= album.user.email.split('@')[0] %>
+        </div>
+      </div>
+      <%= image_tag album.image, class: 'main-image'%>
+      <div class="owner">
+        <%= link_to album.owner, user_path(album.user), class: 'username' %>
+      </div>
+    </section>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="album-show row">
+  <div class="col-md-8">
+    <%=image_tag @album.image, class: 'image' %>
+  </div>
+  <div class="col-md-4">
+    <div class="user">
+      <%= link_to @album.user.email.split('@')[0], user_path(@album.user), class: 'username' %>
+    </div>
+    <div class="album-name">
+      <%= @album.name %>
+    </div>
+  </div>
+</div>
+<div class="album-show row">
+</div>

@@ -1,0 +1,34 @@
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-12 basic-info">
+      <div class="user-wrapper">
+        <h2 class="username"><%= current_user.email.split('@')[0] %></h2>
+        <a class="add-album", href = <%= new_album_path %> >
+          <button>Add Album</button>
+        </a>
+      </div>
+      <ul class="albums">
+        <li><span><%= @albums.count %></span> albums</li>
+        <li><span>195</span> followers</li>
+        <li><span>345</span> following</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="user-tabs">
+  <a class="tab active" href="">
+    <i class="fa fa-th"></i>
+    ALBUMS
+  </a>
+</div>
+
+<div class="user-images">
+  <% @albums.each do |album|%>
+    <div class="wrapper">
+      <%=link_to album_path(album) do %>
+        <%=image_tag album.image %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
