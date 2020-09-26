@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
 				flash[:alert] = error
 			end
 		else
-			flash[:notice] = "Album Created Successfully"
+			flash[:notice] = "Photo Uploaded Successfully"
 		end
 		if user_signed_in?
 			redirect_to user_path(current_user)
