@@ -1,15 +1,9 @@
-<% @photos.each do |photo| %>
-  <div class="album-show row">
-    <div class="col-md-6">
-      <%=image_tag photo.image, class: 'image' %>
-    </div>
-    <div class="col-md-6">
-      <div class="user">
-        <%= link_to "Owner : #{photo.owner}", album_path(photo.album_id), class: 'username' %>
+<div class="photo-show row">
+  <div class="user-images">
+    <% @photos.order(created_at: :desc).each do |photo|%>
+      <div class="wrapper">
+        <%= link_to image_tag(photo.image), photo_path(photo.id), class: 'image' %>
       </div>
-      <div class="album-name">
-        Caption : <%= photo.caption %>
-      </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>

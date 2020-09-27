@@ -9,10 +9,13 @@
     <div class="user">
       <%= link_to "Owner : #{@album.owner}", "#", class: 'username' %>
     </div>
-    <div class="album-name">
-      <%= @album.name %>
+     <div class="user">
+      <%= link_to "Created At : #{@album.created_at.strftime('%d %b %Y')}", "#", class: 'username' %>
     </div>
-    <div class="photo-show row">
+    <div class="user">
+      <%= link_to "Album Name : #{@album.name}", "#", class: 'username' %>
+    </div>
+    <div class="user">
       <%= link_to 'Add Photo', new_photo_path(album_id: @album.id), class: "btn btn-primary add-photo"%>
     </div>
   </div>
@@ -21,7 +24,7 @@
   <div class="user-images">
     <% @album.photos.order(created_at: :desc).each do |photo|%>
       <div class="wrapper">
-        <%=image_tag photo.image %>
+        <%= link_to image_tag(photo.image), photo_path(photo.id), class: 'image' %>
       </div>
     <% end %>
   </div>

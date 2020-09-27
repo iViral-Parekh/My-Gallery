@@ -1,0 +1,16 @@
+<div class="album-show row">
+  <div class="col-md-6">
+    <%=image_tag @photo.image, class: 'image' %>
+  </div>
+  <div class="col-md-6">
+    <div class="user">
+      <%= link_to "Owner : #{@photo.owner}", "#", class: 'username' %>
+    </div>
+     <div class="user">
+      <%= link_to "Created At : #{@photo.created_at.strftime('%d %b %Y')}", "#", class: 'username' %>
+    </div>
+    <div class="user">
+      <%= link_to "Caption : #{@photo.caption}", "#", class: 'username' %>
+    </div>
+  </div>
+</div>

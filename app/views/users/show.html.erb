@@ -2,7 +2,9 @@
   <div class="profile row">
     <div class="col-md-12 basic-info">
       <div class="user-wrapper">
-        <h2 class="username"><%= current_user.email.split('@')[0] %></h2>
+        <% if current_user %>
+          <h2 class="username"><%= current_user.email.split('@')[0] %></h2>
+        <% end %>
         <a class="add-album", href = <%= new_album_path %> >
           <button>Add Album</button>
         </a>
