@@ -1,13 +1,13 @@
 <%= form_for Album.new do |f| %>
   <h2> Create New Album </h2>
   <div class="form-group">
-    Album Name : <%= f.text_field :name %>
+    Album Name : <%= f.text_field :name, required: true %>
   </div>
   <div class="form-group">
-    Album Cover : <%= f.file_field :image %>
+    Album Cover : <%= f.file_field :image, required: true %>
   </div>
   <div class="form-group">
-    Album Owner : <%= f.text_field :owner %>
+    Album Owner : <%= f.text_field :owner, required: true %>
   </div>
   <div class="form-group">
     <%= f.text_field :user_id, value: current_user.id, class:'d-none'%>

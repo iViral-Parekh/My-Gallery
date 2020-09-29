@@ -1,27 +1,13 @@
 class PhotosController < ApplicationController
+	before_action :authenticate_user!, :except => [:index, :show]
 	def create
 		photo = Photo.new(post_params)
-		photo.save
-		if photo.errors.any?
-			photo.errors[:image].each do |error|
-				flash[:alert] = error
-			end
-		else
-			flash[:notice] = "Photo Uploaded Successfully"
-		end
-		if user_signed_in?
-			redirect_to user_path(current_user)
-		else
-			redirect_to root_path
-		end
+		flash[:alert] = photo.errors[:image].first unless photo.save
+		redirect_to user_path(current_user)
 	end
 
 	def new
 		@album_id = params[:album_id]
-		unless user_signed_in?
-			flash[:alert] = "Please Login First"
-			redirect_to new_user_session_path
-		end
 	end
 
 	def show
